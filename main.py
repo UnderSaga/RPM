@@ -4,7 +4,6 @@ if __name__ == '__main__':
     from tkinter import ttk
 
     window = Tk()
-
     x = (window.winfo_screenwidth() - window.winfo_reqwidth()) / 2.3
     y = (window.winfo_screenheight() - window.winfo_reqheight()) / 3
     window.wm_geometry("+%d+%d" % (x, y))
@@ -15,7 +14,6 @@ if __name__ == '__main__':
     MiningWind = LabelFrame(window,
                             width=int(window.winfo_screenwidth() * 0.3), height=int(window.winfo_screenheight() * 0.55),
                             bd=0)
-
     ShopWind = LabelFrame(window,
                           text='Магазин',
                           width=int(window.winfo_screenwidth() * 0.3), height=int(window.winfo_screenheight() * 0.2),

@@ -177,7 +177,7 @@ if __name__ == '__main__':
                            variable=r_var, value=1)
 
     MiningOff = Radiobutton(MiningWind,
-                            text='С майнингом',
+                            text='Без майнинга',
                             command=MiningOff,
                             fg='#f00',
                             disabledforeground='#00e600',

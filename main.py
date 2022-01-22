@@ -22,7 +22,8 @@ if __name__ == '__main__':
                           bd=0,
                           font='25')
 
-    """ Переменные """
+    # Переменные
+
     with open('C:\BuyCoin\save.txt') as f:
         lines = f.read().splitlines()
     counter = float(lines[0])
@@ -37,8 +38,7 @@ if __name__ == '__main__':
     r_var = BooleanVar()
     r_var.set(0)
 
-    """ Функции """
-
+    # Функции
 
     def Click():
         global S, count, achiv
@@ -47,7 +47,6 @@ if __name__ == '__main__':
         if count == achiv + 100:
             messagebox.showinfo("Молодец", "Ну ты и кликер")
             achiv = count + 100
-
 
     def Night():
         ButClick['bg'] = '#29313D'
@@ -74,7 +73,6 @@ if __name__ == '__main__':
         OnSek['bg'] = '#29313D'
         OnSek['fg'] = '#fff'
 
-
     def white():
         ButClick['bg'] = '#fff'
         ButClick['fg'] = '#000'
@@ -98,7 +96,6 @@ if __name__ == '__main__':
         OnClick['fg'] = '#000'
         OnSek['bg'] = '#fff'
         OnSek['fg'] = '#000'
-
 
     def Green():
         ButClick['bg'] = '#215B46'
@@ -125,7 +122,6 @@ if __name__ == '__main__':
         OnSek['bg'] = '#215B46'
         OnSek['fg'] = '#000'
 
-
     def MiningOn():
         global running
         running = True
@@ -133,14 +129,12 @@ if __name__ == '__main__':
         MiningOn['state'] = 'disabled'
         MiningOff['state'] = 'normal'
 
-
     def MiningOff():
         global running
         running = False
         counter_label(label)
         MiningOn['state'] = 'normal'
         MiningOff['state'] = 'disabled'
-
 
     def counter_label(label):
         def count():
@@ -155,14 +149,12 @@ if __name__ == '__main__':
 
         count()
 
-
     def ButUper():
         global S, counter
         if counter >= 100:
             S *= 1.1
             counter -= 100
             OnClick['text'] = 'за клик:' + "%.1f" % S
-
 
     def Upmining():
         global Buyok, count
@@ -171,7 +163,6 @@ if __name__ == '__main__':
             count -= 150
             Score['text'] = "%.1f" % count
             OnSek['text'] = str(Buyok) + '/сек'
-
 
     def Save():
         global counter
@@ -183,20 +174,8 @@ if __name__ == '__main__':
             file.write(str(Buyok) + '\n')
             file.write(str(achiv) + '\n')
 
+    # Объекты
 
-    """ def Frames5 ():
-        ShopWind ['bd'] = 5
-        MiningWind ['bd'] = 5
-
-    def Frames10 ():
-        ShopWind ['bd'] = 10
-        MiningWind ['bd'] = 10
-
-    def NoFrames ():
-        ShopWind ['bd'] = 0
-        MiningWind ['bd'] = 0 """
-
-    """ Объекты """
     MiningOn = Radiobutton(MiningWind,
                            text='С майнингом',
                            command=MiningOn,
@@ -261,7 +240,8 @@ if __name__ == '__main__':
                      maximum=380, value=0,
                      length=200)
 
-    """ Меню """
+    # Меню
+
     menu = Menu(window)
 
     window.config(menu=menu)
@@ -275,7 +255,8 @@ if __name__ == '__main__':
 
     menu.add_command(label='Сохранение', command=Save)
 
-    """ Спавн объектов  """
+    # Спавн объектов
+
     ButClick.pack()
     Score.pack()
     label.pack()

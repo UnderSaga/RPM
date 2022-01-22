@@ -8,7 +8,7 @@ if __name__ == '__main__':
     x = (window.winfo_screenwidth() - window.winfo_reqwidth()) / 2.3
     y = (window.winfo_screenheight() - window.winfo_reqheight()) / 3
     window.wm_geometry("+%d+%d" % (x, y))
-    window.geometry('{}x{}'.format(int(window.winfo_screenwidth() * 0.3), int(window.winfo_screenheight() * 0.65)))
+    window.geometry('{}x{}'.format(int(window.winfo_screenwidth() * 0.3), int(window.winfo_screenheight() * 0.53)))
     window.resizable(False, False)
     window.title('БуйКоин')
 
@@ -23,23 +23,20 @@ if __name__ == '__main__':
                           font='25')
 
     # Переменные
-
     with open('C:\BuyCoin\save.txt') as f:
         lines = f.read().splitlines()
     counter = float(lines[0])
     count = float(lines[1])
     S = float(lines[2])
-    pinki = float(lines[3])
-    Buyok = float(lines[4])
+    Buyok = float(lines[3])
     Coin = PhotoImage(file=r"C:\BuyCoin\Image\b_coin.png")
     Clic = PhotoImage(file=r"C:\BuyCoin\Image\upgrade_click.png")
     MiningUper = PhotoImage(file=r"C:\BuyCoin\Image\upgrade_mining_power.png")
-    achiv = float(lines[5])
-    r_var = BooleanVar()
+    achiv = float(lines[4])
+    r_var = IntVar()
     r_var.set(0)
 
     # Функции
-
     def Click():
         global S, count, achiv
         count += S
@@ -146,7 +143,6 @@ if __name__ == '__main__':
                 counter += Buyok
                 pb.start()
                 pb.step(1)
-
         count()
 
     def ButUper():
@@ -156,7 +152,7 @@ if __name__ == '__main__':
             counter -= 100
             OnClick['text'] = 'за клик:' + "%.1f" % S
 
-    def Upmining():
+    def upMining():
         global Buyok, count
         if count >= 150:
             Buyok += 1
@@ -170,12 +166,10 @@ if __name__ == '__main__':
             file.write(str(counter) + '\n')
             file.write(str(count) + '\n')
             file.write(str(S) + '\n')
-            file.write(str(pinki) + '\n')
             file.write(str(Buyok) + '\n')
             file.write(str(achiv) + '\n')
 
     # Объекты
-
     MiningOn = Radiobutton(MiningWind,
                            text='С майнингом',
                            command=MiningOn,
@@ -229,7 +223,7 @@ if __name__ == '__main__':
 
     ButMiningUper = Button(ShopWind,
                            width=184, height=92,
-                           command=Upmining,
+                           command=upMining,
                            image=MiningUper,
                            bg='#29313D',
                            activebackground='#29313D',
@@ -241,9 +235,7 @@ if __name__ == '__main__':
                      length=200)
 
     # Меню
-
     menu = Menu(window)
-
     window.config(menu=menu)
 
     FrameMenu = Menu(menu)
@@ -252,11 +244,9 @@ if __name__ == '__main__':
     ColorMenu.add_command(label='Светлая', command=white)
     ColorMenu.add_command(label='Зелёная', command=Green)
     menu.add_cascade(label='Темы', menu=ColorMenu)
-
     menu.add_command(label='Сохранение', command=Save)
 
     # Спавн объектов
-
     ButClick.pack()
     Score.pack()
     label.pack()

@@ -21,15 +21,15 @@ if __name__ == '__main__':
                           font='25')
 
     # Переменные
-    with open('C:\BuyCoin\save.txt') as f:
+    with open('save.txt') as f:
         lines = f.read().splitlines()
     counter = float(lines[0])
     count = float(lines[1])
     S = float(lines[2])
     Buyok = float(lines[3])
-    Coin = PhotoImage(file=r"C:\BuyCoin\Image\b_coin.png")
-    Clic = PhotoImage(file=r"C:\BuyCoin\Image\upgrade_click.png")
-    MiningUper = PhotoImage(file=r"C:\BuyCoin\Image\upgrade_mining_power.png")
+    Coin = PhotoImage(file=r"Image\b_coin.png")
+    Clic = PhotoImage(file=r"Image\upgrade_click.png")
+    MiningUper = PhotoImage(file=r"Image\upgrade_mining_power.png")
     achiv = float(lines[4])
     r_var = IntVar()
     r_var.set(0)
@@ -124,13 +124,6 @@ if __name__ == '__main__':
         MiningOn['state'] = 'disabled'
         MiningOff['state'] = 'normal'
 
-    def MiningOff():
-        global running
-        running = False
-        counter_label(label)
-        MiningOn['state'] = 'normal'
-        MiningOff['state'] = 'disabled'
-
     def counter_label(label):
         def count():
             if running:
@@ -142,6 +135,13 @@ if __name__ == '__main__':
                 pb.start()
                 pb.step(1)
         count()
+
+    def MiningOff():
+        global running
+        running = False
+        counter_label(label)
+        MiningOn['state'] = 'normal'
+        MiningOff['state'] = 'disabled'
 
     def ButUper():
         global S, counter
@@ -160,7 +160,7 @@ if __name__ == '__main__':
 
     def Save():
         global counter
-        with open('C:\BuyCoin\save.txt', 'w+') as file:
+        with open('save.txt', 'w+') as file:
             file.write(str(counter) + '\n')
             file.write(str(count) + '\n')
             file.write(str(S) + '\n')
